@@ -43,8 +43,8 @@ router.get('/:id', function(req, res, next) {
 /* POST Endpoints  */
 
 router.post('/',function(req, res, next){
-    res.send("ok");
-        article = new Article(
+
+    article = new Article(
         articleData.length + 1, 
         req.body.title,
         req.body.body,
@@ -53,7 +53,7 @@ router.post('/',function(req, res, next){
 
     articleData.push(article);
     
-    // res.status(201);
+    res.status(201);
     res.send(`/articles/${article.id}`); 
 });
 
