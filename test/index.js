@@ -78,5 +78,20 @@ describe("API Routes", ()=>{
       })
     });
 
+    it("Updates an article", done=>{
+      chai.request(server)
+      .put("/articles/1")
+      .send({
+          body: "Nothing here really, but I wanted to try this out anyway.",
+      })
+      .end(function(err,res){
+          res.should.have.status(200);
+          res.text.should.equal("/articles/1");
+          done();
+      })      
+    })
+
+
+    
 
 })

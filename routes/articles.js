@@ -68,6 +68,27 @@ router.post('/',function(req, res, next){
     }
 });
 
+/* PUT Endpoint */
+router.put('/:id',function(req, res, next){
+
+    //We have to have something to update.
+    if(req.body.title == undefined && 
+        req.body.body == undefined && 
+        req.body.categories == undefined
+    ){
+        res.status(400);
+        res.json({error:"Missing something to update"});
+    }else{
+        let article = articleData.find(el=>{ return el.id == req.params.id});
+        
+        article.title      = (req.body.title != undefined) ? req.body.title : article.title; 
+        article.body       = (req.body.body != undefined) ? req.body.body : article.body;
+        article.categories = (req.body.categories != undefined) ? req.body.categories : article.categories;
+
+        res.status(200);
+        res.send(`/articles/${article.id}`); 
+    }
+});
 
 
 
