@@ -1,33 +1,24 @@
 var express = require('express');
 var router = express.Router();
 
-
+class Article {
+    
+    constructor(id, title, body, categories) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.categories = categories;
+        this.date = new Date();
+    }
+} 
 
 let articleData = [
-    {
-        id:1,
-        title: "I am a title.",
-        body: "body",
-        date:"2018-12-24T23:02:00.000Z",
-        categories: ['toys','electronics','collectables']
-    },
-    {
-        id:2,
-        title: "Buying stuff from a thing",
-        body: "body",
-        date:"2019-06-21T02:02:00.608Z",
-        categories: ['toys']
-    },
-    {
-        id:3,
-        title: "How to impress development managers",
-        body: "body",
-        date:"2018-05-18T02:02:00.608Z",   
-        categories: ['toys','cats','robotics']     
-    }
+    new Article(1,"I am a title.","Nothing here really",['toys','electronics','collectables']),
+    new Article(2,"Buying stuff from a thing","body", ['toys']),
+    new Article(3,"How to impress development managers","body", ['toys','cats','robotics'])
 ]; 
 
-/* GET users listing. */
+/* GET article listing. */
 router.get('/', function(req, res, next) {
     //Send all the articles! In a larger system we'd probabyl paginate this.
     res.json(articleData);
@@ -48,6 +39,15 @@ router.get('/:id', function(req, res, next) {
 
     res.json(thisArticle);
   });
+
+/* POST Endpoints  */
+
+router.post('/',function(req, res, next){
+    req.body
+
+});
+
+
 
 
 module.exports = router;

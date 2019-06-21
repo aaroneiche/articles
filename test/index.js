@@ -44,4 +44,17 @@ describe("API Routes", ()=>{
         })
     });
 
+    it("Creates an Article", done=>{
+      chai.request(server)
+      .post("/")
+      .send({
+          title: "How to write an article",
+          body: "First, you should try really hard to write an article.",
+          categories: ['collectables']
+      })
+      .end(function(err,res){
+          res.should.have.status(201);
+          res.text.should.equal("/articles/4")
+      })
+    });
 })
