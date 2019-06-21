@@ -39,6 +39,7 @@ describe("API Routes", ()=>{
           res.should.be.json;
           res.should.have.status(200);
           res.body.id.should.equal(1);
+          res.body.title.should.equal("I am a title.");
           done();
         })
     });
