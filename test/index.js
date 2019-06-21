@@ -59,4 +59,24 @@ describe("API Routes", ()=>{
           done();
       })
     });
+
+    /* 
+    Missing title, so it should return a 400
+    */
+    it("Fails to create an Article (invalid input)", done=>{
+
+      chai.request(server)
+      .post("/articles/")
+      .send({
+          body: "First, you should try really hard to write an article.",
+          categories: "['collectables']"
+      })
+      .end(function(err,res){
+          res.should.have.status(400);
+          res.should.be.json;
+          done();
+      })
+    });
+
+
 })
