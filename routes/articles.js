@@ -13,9 +13,9 @@ class Article {
 } 
 
 let articleData = [
-    new Article(1,"I am a title.","Nothing here really",['toys','electronics','collectables']),
-    new Article(2,"Buying stuff from a thing","body", ['toys']),
-    new Article(3,"How to impress development managers","body", ['toys','cats','robotics'])
+    new Article(1,`I am a title.`,`Nothing here really`,['toys','electronics','collectables']),
+    new Article(2,`Buying stuff from a thing`,`body`, ['toys']),
+    new Article(3,`How to impress development managers`,`body`, ['toys','cats','robotics'])
 ]; 
 
 /* GET article listing. */
@@ -44,7 +44,7 @@ router.get('/:id', function(req, res, next) {
 
 router.post('/',function(req, res, next){
 
-    article = new Article(
+    let article = new Article(
         articleData.length + 1, 
         req.body.title,
         req.body.body,
