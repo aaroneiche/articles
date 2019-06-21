@@ -4,7 +4,7 @@ var should = chai.should();
 var fs = require("fs");
 
 var chaiHttp = require('chai-http');
-var server = require('../index');
+var server = require('../app');
 
 
 /* 
@@ -20,9 +20,9 @@ chai.use(chaiHttp);
 
 describe("API Routes", ()=>{
 
-    it("Fails to get an Article by ID", ()=>{
+    it("Fails to get an Article by ID", done=>{
         chai.request(server)
-        .get("/articles/1")
+        .get("/articles/1000")
         .send()
         .end(function(err,res){
           res.should.be.json;
@@ -31,7 +31,7 @@ describe("API Routes", ()=>{
         })
     });
 
-    it("Gets an Article by ID", ()=>{
+    it("Gets an Article by ID", done=>{
         chai.request(server)
         .get("/articles/1")
         .send()
