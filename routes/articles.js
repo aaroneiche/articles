@@ -51,7 +51,12 @@ router.get('/:id', function(req, res, next) {
 router.post('/',function(req, res, next){
 
     //Check for missing properties
-    if(req.body.title == undefined || req.body.body == undefined){
+    if( req.body.title == undefined || 
+        req.body.body == undefined ||
+        req.body.title.length === 0 || 
+        req.body.body.length === 0  ||
+        req.body.categories.length === 0
+    ){
         res.status(400);
         res.json({error:"Missing Title or Body of article"});
     }else{

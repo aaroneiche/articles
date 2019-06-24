@@ -78,6 +78,26 @@ describe("API Routes", ()=>{
       })
     });
 
+        /* 
+    Missing title, so it should return a 400
+    */
+   it("Fails to create an Article (empty values)", done=>{
+
+    chai.request(server)
+    .post("/api/articles/")
+    .send({
+        title: "",
+        body: "",
+        categories: "['collectables']"
+    })
+    .end(function(err,res){
+        res.should.have.status(400);
+        res.should.be.json;
+        done();
+    })
+  });
+
+
     it("Updates an article", done=>{
       chai.request(server)
       .put("/api/articles/1")
