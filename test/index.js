@@ -22,7 +22,7 @@ describe("API Routes", ()=>{
 
     it("Fails to get an Article by ID", done=>{
         chai.request(server)
-        .get("/articles/1000")
+        .get("/api/articles/1000")
         .send()
         .end(function(err,res){
           res.should.be.json;
@@ -33,7 +33,7 @@ describe("API Routes", ()=>{
 
     it("Gets an Article by ID", done=>{
         chai.request(server)
-        .get("/articles/1")
+        .get("/api/articles/1")
         .send()
         .end(function(err,res){
           res.should.be.json;
@@ -47,7 +47,7 @@ describe("API Routes", ()=>{
     it("Creates an Article", done=>{
 
       chai.request(server)
-      .post("/articles/")
+      .post("/api/articles/")
       .send({
           title: "How to write an article",
           body: "First, you should try really hard to write an article.",
@@ -55,7 +55,7 @@ describe("API Routes", ()=>{
       })
       .end(function(err,res){
           res.should.have.status(201);
-          res.text.should.equal("/articles/4");
+          res.text.should.equal("/api/articles/4");
           done();
       })
     });
@@ -66,7 +66,7 @@ describe("API Routes", ()=>{
     it("Fails to create an Article (invalid input)", done=>{
 
       chai.request(server)
-      .post("/articles/")
+      .post("/api/articles/")
       .send({
           body: "First, you should try really hard to write an article.",
           categories: "['collectables']"
@@ -80,13 +80,13 @@ describe("API Routes", ()=>{
 
     it("Updates an article", done=>{
       chai.request(server)
-      .put("/articles/1")
+      .put("/api/articles/1")
       .send({
           body: "Nothing here really, but I wanted to try this out anyway.",
       })
       .end(function(err,res){
           res.should.have.status(200);
-          res.text.should.equal("/articles/1");
+          res.text.should.equal("/api/articles/1");
           done();
       })      
     })

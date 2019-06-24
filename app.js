@@ -17,8 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/articles', articles);
-
+app.use('/api/articles', articles);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

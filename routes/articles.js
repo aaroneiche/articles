@@ -64,7 +64,7 @@ router.post('/',function(req, res, next){
         articleData.push(article);
         
         res.status(201);
-        res.send(`/articles/${article.id}`); 
+        res.send(`/api/articles/${article.id}`); 
     }
 });
 
@@ -86,7 +86,7 @@ router.put('/:id',function(req, res, next){
         article.categories = (req.body.categories != undefined) ? req.body.categories : article.categories;
 
         res.status(200);
-        res.send(`/articles/${article.id}`); 
+        res.send(`/api/articles/${article.id}`); 
     }
 });
 
